@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jake Spiteri</title>
+    <link>https://jakespiteri.co.uk/</link>
+    <description>Recent content on Jake Spiteri</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    
+	<atom:link href="https://jakespiteri.co.uk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Integration and Markov Chain Monte Carlo</title>
+      <link>https://jakespiteri.co.uk/posts/1/01/integration-and-markov-chain-monte-carlo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jakespiteri.co.uk/posts/1/01/integration-and-markov-chain-monte-carlo/</guid>
+      <description>Numerical Integration Quadrature “Quadrature rules” are integral approximations which use a finite number of evaluations of the function. All of the quadrature rules below approximate a function using interpolating polynomials.
+We will first look at some key ideas in numerical integration by approximating definite integrals over a finite interval. We will then extend these ideas to semi-infinite and infinite intervals. We will also consider multiple integrals.
+In practice we can use Rs integrate function for one-dimensional integrals, and the cubature package for multiple integrals.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://jakespiteri.co.uk/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jakespiteri.co.uk/about/</guid>
+      <description>I am a PhD Student under the COMPASS CDT in the Institute for Statistical Science, University of Bristol. Prior to my PhD I completed an integrated master&amp;rsquo;s degree in Mathematics with Statistics at the University of Bristol.
+My research interests include:
+  Bayesian methods,
+  High-dimensional statistics,
+  Computational statistics,
+  Graph theory.
+  You can contact me at jake.spiteri@bristol.ac.uk..</description>
+    </item>
+    
+  </channel>
+</rss>
