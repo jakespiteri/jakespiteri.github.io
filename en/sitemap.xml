@@ -3,10 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://jakespiteri.co.uk/posts/1/01/integration-and-markov-chain-monte-carlo/</loc>
-  </url>
-  
-  <url>
     <loc>https://jakespiteri.co.uk/about/</loc>
   </url>
   
@@ -25,6 +21,10 @@
   </url>
   
   <url>
+    <loc>https://jakespiteri.co.uk/posts/1/01/hello-all/</loc>
+  </url>
+  
+  <url>
     <loc>https://jakespiteri.co.uk/</loc>
     <xhtml:link
                 rel="alternate"
@@ -36,6 +36,10 @@
                 hreflang="en"
                 href="https://jakespiteri.co.uk/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://jakespiteri.co.uk/portfolio/</loc>
   </url>
   
   <url>

@@ -11,17 +11,6 @@
     
     
     <item>
-      <title>Integration and Markov Chain Monte Carlo</title>
-      <link>https://jakespiteri.co.uk/posts/1/01/integration-and-markov-chain-monte-carlo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/posts/1/01/integration-and-markov-chain-monte-carlo/</guid>
-      <description>Numerical Integration Quadrature “Quadrature rules” are integral approximations which use a finite number of evaluations of the function. All of the quadrature rules below approximate a function using interpolating polynomials.
-We will first look at some key ideas in numerical integration by approximating definite integrals over a finite interval. We will then extend these ideas to semi-infinite and infinite intervals. We will also consider multiple integrals.
-In practice we can use Rs integrate function for one-dimensional integrals, and the cubature package for multiple integrals.</description>
-    </item>
-    
-    <item>
       <title>About</title>
       <link>https://jakespiteri.co.uk/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -34,6 +23,25 @@ My research interests include:
   Computational statistics,
   Graph theory.
   You can contact me at jake.spiteri@bristol.ac.uk..</description>
+    </item>
+    
+    <item>
+      <title>Hello All</title>
+      <link>https://jakespiteri.co.uk/posts/1/01/hello-all/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jakespiteri.co.uk/posts/1/01/hello-all/</guid>
+      <description>Posts coming soon!</description>
+    </item>
+    
+    <item>
+      <title>Portfolio</title>
+      <link>https://jakespiteri.co.uk/portfolio/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jakespiteri.co.uk/portfolio/</guid>
+      <description>I am currently in the first year of my PhD which involves a year of training. I have built up a portfolio of code and notes during this year which are available below.
+Notes and reports  Statistical Methods 1 &amp;mdash; Lecture Notes. Statistical Computing 1 &amp;mdash; Reports which can be found below.  An introduction to R Reproducibility Projects, version control, and packages Vectorization and parallel computing Functional and object-oriented programming Tidyverse Debugging and performance Matrices Numerical optimization (extended report) Integration and Markov chain Monte Carlo (extended report)    Presentations  Optimization and the BFGS Algorithm [December 2019] &amp;mdash; slides here.</description>
     </item>
     
   </channel>
