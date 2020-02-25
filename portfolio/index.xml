@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Portfolios on Jake Spiteri</title>
+    <title>Portfolio on Jake Spiteri</title>
     <link>https://jakespiteri.co.uk/portfolio/</link>
-    <description>Recent content in Portfolios on Jake Spiteri</description>
+    <description>Recent content in Portfolio on Jake Spiteri</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     
@@ -19,16 +19,6 @@
       <description>Numerical Integration Quadrature “Quadrature rules” are integral approximations which use a finite number of evaluations of the function. All of the quadrature rules below approximate a function using interpolating polynomials.
 We will first look at some key ideas in numerical integration by approximating definite integrals over a finite interval. We will then extend these ideas to semi-infinite and infinite intervals. We will also consider multiple integrals.
 In practice we can use Rs integrate function for one-dimensional integrals, and the cubature package for multiple integrals.</description>
-    </item>
-    
-    <item>
-      <title>Portfolio</title>
-      <link>https://jakespiteri.co.uk/portfolio/temp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/portfolio/temp/</guid>
-      <description>I am currently in the first year of my PhD which involves a year of training. I have built up a portfolio of code and notes during this year which are available below.
-Notes and reports  Statistical Methods 1 &amp;mdash; Lecture Notes. Statistical Computing 1 &amp;mdash; Reports which can be found below.  An introduction to R Reproducibility Projects, version control, and packages Vectorization and parallel computing Functional and object-oriented programming Tidyverse Debugging and performance Matrices Numerical optimization (extended report) Integration and Markov chain Monte Carlo (extended report)    Presentations  Optimization and the BFGS Algorithm [December 2019] &amp;mdash; slides here.</description>
     </item>
     
     <item>
