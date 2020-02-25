@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Jake Spiteri">
+<meta name="description" content="Matrices In this report we will look at how R treats matrices.
+We will explore the Matrix package, which extends the basic R functionality for matrices. For example, it seems odd that base R does not have a method of determining the rank of a matrix up to a certain tolerance — the Matrix package adds this functionality.
+Dense matrices A matrix is a two dimensional data structure in R." />
+<meta name="keywords" content="statistics, mathematics, data science, machine learning, deep learning" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://jakespiteri.co.uk/portfolio/computing/report-8/" />
+
+
+    <title>
+        
+            Portfolio Report 8: Matrices :: Jake Spiteri  — Jake Spiteri
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://jakespiteri.co.uk/main.min.7bfbbe12786fa0ded4b4c0d792cbb36a5bd0bdb0b856dde57aa7b1f6fe0f2b87.css">
+
+
+    
+        <link rel="stylesheet" type="text/css" href="static/style.css">
+    
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://jakespiteri.co.uk/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://jakespiteri.co.uk/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://jakespiteri.co.uk/favicon-16x16.png">
+    <link rel="manifest" href="https://jakespiteri.co.uk/site.webmanifest">
+    <link rel="mask-icon" href="https://jakespiteri.co.uk/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://jakespiteri.co.uk/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+<meta itemprop="name" content="Portfolio Report 8: Matrices">
+<meta itemprop="description" content="Matrices In this report we will look at how R treats matrices.
+We will explore the Matrix package, which extends the basic R functionality for matrices. For example, it seems odd that base R does not have a method of determining the rank of a matrix up to a certain tolerance — the Matrix package adds this functionality.
+Dense matrices A matrix is a two dimensional data structure in R.">
+
+<meta itemprop="wordCount" content="2865">
+<meta itemprop="image" content="https://jakespiteri.co.uk"/>
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jakespiteri.co.uk"/>
+
+<meta name="twitter:title" content="Portfolio Report 8: Matrices"/>
+<meta name="twitter:description" content="Matrices In this report we will look at how R treats matrices.
+We will explore the Matrix package, which extends the basic R functionality for matrices. For example, it seems odd that base R does not have a method of determining the rank of a matrix up to a certain tolerance — the Matrix package adds this functionality.
+Dense matrices A matrix is a two dimensional data structure in R."/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://jakespiteri.co.uk/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://jakespiteri.co.uk/about/">About</a></li><li><a href="https://jakespiteri.co.uk/portfolio/">Portfolio</a></li><li><a href="https://jakespiteri.co.uk/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://jakespiteri.co.uk/portfolio/computing/report-8/">Portfolio Report 8: Matrices</a></h2>
+
+            
+
+            <div class="post-content">
+                
+
+
+<div id="matrices" class="section level1">
+<h1>Matrices</h1>
+<p>In this report we will look at how <code>R</code> treats matrices.</p>
+<p>We will explore the <code>Matrix</code> package, which extends the basic <code>R</code> functionality for matrices. For example, it seems odd that base <code>R</code> does not have a method of determining the rank of a matrix up to a certain tolerance — the <code>Matrix</code> package adds this functionality.</p>
+<div id="dense-matrices" class="section level2">
+<h2>Dense matrices</h2>
+<p>A matrix is a two dimensional data structure in <code>R</code>. We specify a matrix by its columns, and we can change this default functionality by setting <code>byrow=T</code>. We can assign names to the rows and columns of a matrix, and easily change these names by redefining <code>colnames(&lt;matrix&gt;)</code> and <code>rownames(&lt;matrix&gt;)</code>. This is shown below.</p>
+<pre class="r"><code># matrices are defined by columns
+m &lt;- matrix(1:4, 2, 2)
+m</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4</code></pre>
+<pre class="r"><code># print the class of the matrix object
+class(m)</code></pre>
+<pre><code>## [1] &quot;matrix&quot;</code></pre>
+<pre class="r"><code># we can observe attributes
+attributes(m)</code></pre>
+<pre><code>## $dim
+## [1] 2 2</code></pre>
+<pre class="r"><code># we can print this attribute
+dim(m)</code></pre>
+<pre><code>## [1] 2 2</code></pre>
+<pre class="r"><code># we can assign row and column names when creating the matrix
+m &lt;- matrix(c(rnorm(2,0,1), rnorm(2, 1, 1)), 2, 2, 
+            dimnames = list(c(&quot;obs 1&quot;, &quot;obs 2&quot;), c(&quot;r.v. 1&quot;, &quot;r.v. 2&quot;)))
+m</code></pre>
+<pre><code>##            r.v. 1     r.v. 2
+## obs 1  0.15825052 -1.1295597
+## obs 2 -0.06579235 -0.3006537</code></pre>
+<pre class="r"><code># print colnames
+colnames(m)</code></pre>
+<pre><code>## [1] &quot;r.v. 1&quot; &quot;r.v. 2&quot;</code></pre>
+<pre class="r"><code># print rownames
+rownames(m)</code></pre>
+<pre><code>## [1] &quot;obs 1&quot; &quot;obs 2&quot;</code></pre>
+<pre class="r"><code># redefine colnames
+colnames(m) &lt;- c(&quot;new col name 1&quot;, &quot;new col name 2&quot;)
+
+# redefine rownames
+rownames(m) &lt;- c(&quot;new row name 1&quot;, &quot;new row name 2&quot;)
+
+# print new matrix
+m</code></pre>
+<pre><code>##                new col name 1 new col name 2
+## new row name 1     0.15825052     -1.1295597
+## new row name 2    -0.06579235     -0.3006537</code></pre>
+<p>It’s quite odd but when we select a row or column of a matrix, <code>R</code> returns a vector and loses the matrix dimensions. When selecting a row of a <span class="math inline">\(2 \times 2\)</span> matrix we would expect a vector of dimension <span class="math inline">\(1 \times 2\)</span>.</p>
+<pre class="r"><code># select row
+m[1,]</code></pre>
+<pre><code>## new col name 1 new col name 2 
+##      0.1582505     -1.1295597</code></pre>
+<pre class="r"><code># check dimensions of row
+dim(m[1,])</code></pre>
+<pre><code>## NULL</code></pre>
+<p>In order to change this behavior, we can specify <code>drop=F</code>.</p>
+<pre class="r"><code># select row
+m[1,,drop=F]</code></pre>
+<pre><code>##                new col name 1 new col name 2
+## new row name 1      0.1582505       -1.12956</code></pre>
+<pre class="r"><code># check dimensions
+dim(m[1,,drop=F])</code></pre>
+<pre><code>## [1] 1 2</code></pre>
+<p>This is inconvenient but it allows us to maintain the dimensions of a matrix when indexing. When selecting a column of a matrix we would expect to obtain a column vector, but this is also not the case unless we specify <code>drop=F</code>.</p>
+<p><code>R</code> also has higher-dimensional data structures called arrays. We can think of an array as stacked matrices. For example, specifying dimension <code>(4,5,6)</code> creates 6 matrices with 4 rows and 5 columns.</p>
+<p>Below we will specify an array of dimension <code>(2,2,3)</code>. Recall that <code>R</code> specifies a matrix by its columns — we will demonstrate this.</p>
+<pre class="r"><code>arr &lt;- array(1:3, c(2,2,3))
+
+dim(arr)</code></pre>
+<pre><code>## [1] 2 2 3</code></pre>
+<pre class="r"><code>arr[,,1]</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    1</code></pre>
+<pre class="r"><code>arr[,,2]</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    2    1
+## [2,]    3    2</code></pre>
+<pre class="r"><code>arr[,,3]</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    3    2
+## [2,]    1    3</code></pre>
+<pre class="r"><code># We can also select the rows or columns
+arr[1,,]</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    3    1    2</code></pre>
+<p>Note in the above that when we do <code>arr[1,,]</code> this selects the first row of each matrix, which are <span class="math inline">\((1,3)\)</span>, <span class="math inline">\((2,1)\)</span>, and <span class="math inline">\((3,2)\)</span>, and puts them into a matrix.</p>
+</div>
+<div id="solving-linear-systems" class="section level2">
+<h2>Solving linear systems</h2>
+<p>A common problem encountered in linear algebra is solving a system of linear equations. That is, finding <span class="math inline">\(x\)</span> that solves <span class="math inline">\(Ax = b\)</span>. On paper we would simply write <span class="math inline">\(x = A^{-1}b\)</span>. There are two ways of implementing this solution in <code>R</code>: we could use <code>x &lt;- solve(A) %*% b</code>; we could directly solve the system using <code>x = solve(A, b)</code>. Naturally we would expect these solutions to be equal, but this is not necessarily the case in <code>R</code>. We shall show this by an example with Hilbert matrices which are well known to be close to singular.</p>
+<pre class="r"><code>A &lt;- as.matrix(Hilbert(9))
+
+# finding the rank is inconsistent
+rankMatrix(A)</code></pre>
+<pre><code>## [1] 9
+## attr(,&quot;method&quot;)
+## [1] &quot;tolNorm2&quot;
+## attr(,&quot;useGrad&quot;)
+## [1] FALSE
+## attr(,&quot;tol&quot;)
+## [1] 1.998401e-15</code></pre>
+<pre class="r"><code>rankMatrix(A, tol = 1e-9)</code></pre>
+<pre><code>## [1] 7
+## attr(,&quot;method&quot;)
+## [1] &quot;tolNorm2&quot;
+## attr(,&quot;useGrad&quot;)
+## [1] FALSE
+## attr(,&quot;tol&quot;)
+## [1] 1e-09</code></pre>
+<pre class="r"><code># show nearly singular
+det(A)</code></pre>
+<pre><code>## [1] 9.720256e-43</code></pre>
+<pre class="r"><code># create a linear system
+x &lt;- matrix(rnorm(9), 9, 1)
+b &lt;- A %*% x
+
+# solve
+x1 &lt;- solve(A) %*% b
+x2 &lt;- solve(A, b)
+
+# compute some metric of the error
+norm(x-x1)</code></pre>
+<pre><code>## [1] 0.0001718044</code></pre>
+<pre class="r"><code>norm(x-x2)</code></pre>
+<pre><code>## [1] 3.660664e-05</code></pre>
+<pre class="r"><code># compare the residuals
+norm(b - A %*% x1)</code></pre>
+<pre><code>## [1] 1.922673e-06</code></pre>
+<pre class="r"><code>norm(b - A %*% x2)</code></pre>
+<pre><code>## [1] 4.440892e-16</code></pre>
+<p>We see that solving the system of equations directly is far superior, both in terms of accuracy and speed. In <code>R</code> we should always avoid directly computing the inverse of a matrix, unless the inverted matrix will be used multiple times to solve linear systems. Even then, there are better ways to approach the problem. We can always look at different decompositions of the matrix and find a more numerically stable method of solving the linear system. This is what functions such as <code>lm()</code> do — they do not directly solve for predicted coefficients using <span class="math inline">\(\hat{\beta} = (X^TX)^{-1}X^TY\)</span>, they rely on the QR decomposition. Before we compute the inverse of a matrix we should try to find a more elegant solution by decomposing the matrices involved.</p>
+</div>
+<div id="numerical-stability-and-finite-precision-arithmetic" class="section level2">
+<h2>Numerical stability and finite precision arithmetic</h2>
+<p>In most programming packages, a floating point number is stored as a ‘double’ precision number. According to the IEEE754 standard a double number consists of 64 binary bits arranged as follows:</p>
+<ul>
+<li>sign bit: 1 bit</li>
+<li>exponent bit: 11 bits</li>
+<li>significant precision: 52 bits</li>
+</ul>
+<p>Thus, we are limited in the length of the numbers we can store. This means there exist smallest and largest numbers in <code>R</code>. We can see this demonstrated below.</p>
+<pre class="r"><code>c(2^(-1075), 2^(-1074), 2^1023, 2^1024, 2^1024 / 2^1024)</code></pre>
+<pre><code>## [1]  0.000000e+00 4.940656e-324 8.988466e+307           Inf           NaN</code></pre>
+<p>We see that <span class="math inline">\(2^{1023}\)</span> is the largest number that can be stored. Any higher and <code>R</code> returns <code>Inf</code>. Note that we can no longer do arithmetic with <code>Inf</code> — even a simple operation such as <span class="math inline">\(2^{1024}/2^{1024}\)</span> cannot be computed.</p>
+<p>We have 52 precision bits, so we can expect an error rate of approximately <span class="math inline">\(10^{-16}\)</span> (<span class="math inline">\(2^{-52} \approx 2.22 \times 10^{-16}\)</span>) in numerical computations of double numbers. This is shown below. The <code>R</code> documentation mentions that we should avoid using more than 15 digits.</p>
+<pre class="r"><code># R will not suggest digits &gt;= 16
+# so if we add a very small number to 1, it will not print
+print(1 + 1e-14)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code># specify digits
+print(1 + 1e-14, digits=15)</code></pre>
+<pre><code>## [1] 1.00000000000001</code></pre>
+<p>These numerical characteristics of the machine are also stored in <code>R</code>. We can access them using <code>.Machine</code>. For example, we can find the smallest <span class="math inline">\(x\)</span> such that <span class="math inline">\(1 + x \neq 1\)</span> (the machine epsilon) using <code>.Machine$double.eps</code>. <code>.Machine</code> stores many interesting characteristics and is definitely worth exploring.</p>
+<pre class="r"><code># 
+.Machine$double.eps</code></pre>
+<pre><code>## [1] 2.220446e-16</code></pre>
+<p>Arithmetic with double floating point numbers is not so easy in <code>R</code>. This is because of numerical errors — this is a problem for even trivial calculations as shown below. These errors occur because floating points can only represent the dyadic rationals, which are numbers with denominators which are powers of 2. Hence 0.1 is simply approximated as a dyadic rational. This leads to unexpected results, for example, <code>0.1+0.2 == 0.3</code> is <code>FALSE</code>!</p>
+<pre class="r"><code># not zero
+0.1+0.2-0.3</code></pre>
+<pre><code>## [1] 5.551115e-17</code></pre>
+<pre class="r"><code># looks okay
+0.1 + 0.2</code></pre>
+<pre><code>## [1] 0.3</code></pre>
+<pre class="r"><code># check
+0.1 + 0.2 == 0.3</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code># all.equal uses a tolerance parameter
+all.equal(0.1 + 0.2, 0.3)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>We see that the equality comparison <code>==</code> often does not behave the way we expect it to. When working with double floating point numbers we should avoid testing equality using <code>==</code> and instead use <code>all.equal()</code> which ignores machine errors using a tolerance parameter.</p>
+<p><code>R</code> also has an integer data type ‘long’.</p>
+<pre class="r"><code># 1L seems to be the same as 1
+1L</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code># test equality
+1 == 1L</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>identical(1, 1L)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<p>Given that error is introduced with arithmetic operations, the errors produced by matrix multiplication are much larger due to the numerous operations of addition and scalar multiplication.</p>
+<p>Suppose we have matrices <span class="math inline">\(A \in \mathbb{R}^{n \times n}\)</span>, <span class="math inline">\(B \in \mathbb{R}^{n \times m}\)</span>, and <span class="math inline">\(C \in \mathbb{R}^{m \times 1}\)</span>. Then the flop cost of computing <span class="math inline">\(AB\)</span> is of the order <span class="math inline">\(\mathcal{O}(n^2m)\)</span> as it requires <span class="math inline">\(n^2m\)</span> multiplications. The flop cost of computing <span class="math inline">\(BC\)</span> is of the order <span class="math inline">\(\mathcal{O}(nm)\)</span>. Let <span class="math inline">\(m=n\)</span>, then to compute <span class="math inline">\(ABC\)</span> has cost of the order <span class="math inline">\(\mathcal{O}(n^3)\)</span> and to compute <span class="math inline">\(A(BC)\)</span> has cost of the order <span class="math inline">\(\mathcal{O}(n^2)\)</span>. Thus, whilst these quantities are the same algebraically, the order of multiplications impacts the number of multiplications and thus impacts the error produced. In the following example we expect computing <span class="math inline">\(ABC\)</span> to have an error approximately <span class="math inline">\(10\)</span> times larger than computing <span class="math inline">\(A(BC)\)</span>.</p>
+<pre class="r"><code># check error for matrix addition and subtraction
+A &lt;- matrix(rnorm(100),10,10); B &lt;- matrix(rnorm(100),10,10); C &lt;- rnorm(10)
+summary(c((A + B) - A - B))</code></pre>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -2.22e-16  0.00e+00  0.00e+00  1.24e-18  0.00e+00  2.22e-16</code></pre>
+<pre class="r"><code># check error for matrix multiplication
+summary(c(A%*%B%*%C - A%*%(B%*%C)))</code></pre>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## 0.000e+00 1.110e-16 8.882e-16 1.643e-15 2.665e-15 5.329e-15</code></pre>
+<pre class="r"><code># check computation times
+n &lt;- 5000
+A &lt;- matrix(rnorm(n^2), n, n); B &lt;- matrix(rnorm(n^2), n, n); C &lt;- rnorm(n)
+c(system.time(A%*%B%*%C), system.time(A%*%(B%*%C)))</code></pre>
+<pre><code>##  user.self   sys.self    elapsed user.child  sys.child  user.self   sys.self 
+##     33.397      3.339      6.633      0.000      0.000      0.527      0.182 
+##    elapsed user.child  sys.child 
+##      0.176      0.000      0.000</code></pre>
+<p>When working with matrices we must think carefully about what we are trying to do, in order to avoid unnecessary multiplications which can introduce numerical errors.</p>
+<p>Suppose we want to sum the diagonal entries of the matrix product <span class="math inline">\(AB\)</span>, for <span class="math inline">\(A \in \mathbb{R}^{n \times m}\)</span>, <span class="math inline">\(B \in \mathbb{R}^{m \times n}\)</span> where <span class="math inline">\(m &lt;&lt; n\)</span>. Note the costs of forming <span class="math inline">\(AB\)</span> compared to <span class="math inline">\(BA\)</span> (<span class="math inline">\(\mathcal{O}(n^2m)\)</span> compared to <span class="math inline">\(\mathcal{O}(m^2n)\)</span>). In <code>R</code> there are multiple ways we can do this.</p>
+<ul>
+<li><p>We can compute the matrix product <span class="math inline">\(AB\)</span>, extract the diagonal entries, and sum them.</p></li>
+<li><p>We can instead compute the matrix product <span class="math inline">\(BA\)</span>, extract the diagonal entries, and sum them. This uses the fact that <span class="math inline">\(\text{tr}(AB) = \text{tr}(BA)\)</span>.</p></li>
+<li><p>We can sum the elements of <span class="math inline">\(A * B^T\)</span> (element-wise multiplication), since <span class="math inline">\(\text{tr} = \sum_{i,j} A_{ij} B_{ji}\)</span>.</p></li>
+</ul>
+<pre class="r"><code>n &lt;- 10000; m &lt;- 1000
+A &lt;- matrix(rnorm(n*m), n, m); B &lt;- matrix(rnorm(n*m), m, n)
+
+# first, second, and third method
+first &lt;- sum(diag(A %*% B))
+second &lt;- sum(diag(B %*% A))
+third &lt;- sum(A * t(B))
+
+# compare errors
+summary(first - second)</code></pre>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## 1.819e-12 1.819e-12 1.819e-12 1.819e-12 1.819e-12 1.819e-12</code></pre>
+<pre class="r"><code>summary(first - third)</code></pre>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## 9.095e-13 9.095e-13 9.095e-13 9.095e-13 9.095e-13 9.095e-13</code></pre>
+<pre class="r"><code>summary(second - third)</code></pre>
+<pre><code>##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+## -9.095e-13 -9.095e-13 -9.095e-13 -9.095e-13 -9.095e-13 -9.095e-13</code></pre>
+<pre class="r"><code># compare computation time
+system.time(sum(diag(A %*% B))) # first</code></pre>
+<pre><code>##    user  system elapsed 
+##  32.581   2.957   7.142</code></pre>
+<pre class="r"><code>system.time(sum(diag(B %*% A))) # second</code></pre>
+<pre><code>##    user  system elapsed 
+##   2.706   0.745   0.674</code></pre>
+<pre class="r"><code>system.time(sum(A * t(B)))      # third</code></pre>
+<pre><code>##    user  system elapsed 
+##   0.326   0.041   0.366</code></pre>
+<p>The second method is much better than the first both in terms of precision and run time. The third method is better than the second method.</p>
+</div>
+<div id="sparse-matrices" class="section level2">
+<h2>Sparse Matrices</h2>
+<p>The R packages <code>Matrix</code> provides additional functionality for both dense matrices and sparse matrices. In the <code>Matrix</code> packages, dense matrices are stored as <code>dgeMatrix</code> objects, and sparse matrices are stored as <code>dgCMatrix</code> objects. A useful function we have already seen is <code>rankMatrix</code> which provides the rank of the input matrix up to a certain tolerance.</p>
+<pre class="r"><code>library(Matrix)
+A &lt;- Matrix(c(1,1,2,2),2,2)
+B &lt;- Matrix(c(1,1,2,2) + rnorm(4)/1e10,2,2)
+
+c(rankMatrix(A), rankMatrix(B), rankMatrix(B, tol=1e-7))</code></pre>
+<pre><code>## [1] 1 2 1</code></pre>
+<p>A sparse matrix is one in which most entries are equal to zero. It’s inefficient to store all of these zeros in memory, and so we only store the non-zero entries.</p>
+<pre class="r"><code>set.seed(25)
+nrows &lt;- ncols &lt;- 500
+entries &lt;- sample(c(0,1,2),nrows*ncols,TRUE,c(0.98, 0.01, 0.01))
+m1 &lt;- matrix(entries, nrows, ncols)
+m2 &lt;- Matrix(entries, nrows, ncols, sparse = TRUE)
+c(class(m1), class(m2))</code></pre>
+<pre><code>## [1] &quot;matrix&quot;    &quot;dgCMatrix&quot;</code></pre>
+<pre class="r"><code>m1[1:2,1:10]</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]    0    0    0    0    0    0    0    0    0     0
+## [2,]    0    1    0    0    0    0    0    0    0     1</code></pre>
+<pre class="r"><code>m2[1:2,1:10]</code></pre>
+<pre><code>## 2 x 10 sparse Matrix of class &quot;dgCMatrix&quot;
+##                         
+## [1,] . . . . . . . . . .
+## [2,] . 1 . . . . . . . 1</code></pre>
+<pre class="r"><code>c(object.size(m1), object.size(m2))</code></pre>
+<pre><code>## [1] 2000216   62904</code></pre>
+<p>We see that a sparse matrix defined using the <code>Matrix</code> package has class <code>dgCMatrix</code>. The ‘d’ stands for digit, the ‘g’ stands for general, and the ‘C’ stands for column. We can convert a <code>dgCMatrix</code> to a <code>dgeMatrix</code> — the standard class for dense matrices — but we will lose the memory improvements of the compressed sparse format. Alternatives to the <code>dgCMatrix</code> are the <code>dgRMatrix</code> and <code>dgTMatrix</code> classes. We can convert a <code>dgCMatrix</code> into a <code>dgTMatrix</code> (a triplet matrix), but not a <code>dgRMatrix</code>.</p>
+<pre class="r"><code># display the structure
+str(m2, max.level = 1)</code></pre>
+<pre><code>## Formal class &#39;dgCMatrix&#39; [package &quot;Matrix&quot;] with 6 slots</code></pre>
+<pre class="r"><code>str(m2)</code></pre>
+<pre><code>## Formal class &#39;dgCMatrix&#39; [package &quot;Matrix&quot;] with 6 slots
+##   ..@ i       : int [1:4950] 5 46 141 211 315 327 380 430 482 485 ...
+##   ..@ p       : int [1:501] 0 10 21 29 42 47 54 58 67 76 ...
+##   ..@ Dim     : int [1:2] 500 500
+##   ..@ Dimnames:List of 2
+##   .. ..$ : NULL
+##   .. ..$ : NULL
+##   ..@ x       : num [1:4950] 2 1 1 1 1 1 1 1 1 1 ...
+##   ..@ factors : list()</code></pre>
+<pre class="r"><code>which(m2[,1]&gt;0)</code></pre>
+<pre><code>##  [1]   6  47 142 212 316 328 381 431 483 486</code></pre>
+<pre class="r"><code># show difference in memory size
+object.size(as(m2, &#39;dgeMatrix&#39;))</code></pre>
+<pre><code>## 2001176 bytes</code></pre>
+<pre class="r"><code>object.size(as(m2, &#39;dgTMatrix&#39;))</code></pre>
+<pre><code>## 80696 bytes</code></pre>
+<pre class="r"><code>object.size(m2) # dgCMatrix</code></pre>
+<pre><code>## 62904 bytes</code></pre>
+<pre class="r"><code># print the matrices before and after coercion
+m2[1:2, 1:10] </code></pre>
+<pre><code>## 2 x 10 sparse Matrix of class &quot;dgCMatrix&quot;
+##                         
+## [1,] . . . . . . . . . .
+## [2,] . 1 . . . . . . . 1</code></pre>
+<pre class="r"><code>as(m2, &#39;dgTMatrix&#39;)[1:2, 1:10]</code></pre>
+<pre><code>## 2 x 10 sparse Matrix of class &quot;dgTMatrix&quot;
+##                         
+## [1,] . . . . . . . . . .
+## [2,] . 1 . . . . . . . 1</code></pre>
+<div id="operations-for-sparse-matrices" class="section level3">
+<h3>Operations for sparse matrices</h3>
+<pre class="r"><code>A &lt;- B &lt;- Matrix(c(1,1,0,0,0,1),3,2, sparse=TRUE)
+A</code></pre>
+<pre><code>## 3 x 2 sparse Matrix of class &quot;dgCMatrix&quot;
+##         
+## [1,] 1 .
+## [2,] 1 .
+## [3,] . 1</code></pre>
+<pre class="r"><code># division maintains class
+A/10</code></pre>
+<pre><code>## 3 x 2 sparse Matrix of class &quot;dgCMatrix&quot;
+##             
+## [1,] 0.1 .  
+## [2,] 0.1 .  
+## [3,] .   0.1</code></pre>
+<pre class="r"><code># addition and subtraction change class to dgeMatrix
+A+1; A-1</code></pre>
+<pre><code>## 3 x 2 Matrix of class &quot;dgeMatrix&quot;
+##      [,1] [,2]
+## [1,]    2    1
+## [2,]    2    1
+## [3,]    1    2</code></pre>
+<pre><code>## 3 x 2 Matrix of class &quot;dgeMatrix&quot;
+##      [,1] [,2]
+## [1,]    0   -1
+## [2,]    0   -1
+## [3,]   -1    0</code></pre>
+<pre class="r"><code># matrix multiplication changes class
+A %*% c(1,1)</code></pre>
+<pre><code>## 3 x 1 Matrix of class &quot;dgeMatrix&quot;
+##      [,1]
+## [1,]    1
+## [2,]    1
+## [3,]    1</code></pre>
+<pre class="r"><code># addition and subtraction of two dgCMatrix objects produces an object of the same class
+A+B; A-B</code></pre>
+<pre><code>## 3 x 2 sparse Matrix of class &quot;dgCMatrix&quot;
+##         
+## [1,] 2 .
+## [2,] 2 .
+## [3,] . 2</code></pre>
+<pre><code>## 3 x 2 sparse Matrix of class &quot;dgCMatrix&quot;
+##         
+## [1,] 0 .
+## [2,] 0 .
+## [3,] . 0</code></pre>
+<pre class="r"><code># matrix multiplication of two dgCMatrix objects gives a dgCMatrix object
+A %*% t(B)</code></pre>
+<pre><code>## 3 x 3 sparse Matrix of class &quot;dgCMatrix&quot;
+##           
+## [1,] 1 1 .
+## [2,] 1 1 .
+## [3,] . . 1</code></pre>
+<pre class="r"><code># row or column binding dgCMatrix objects returns a dgCMatrix
+cbind(A,A); rbind(A,A)</code></pre>
+<pre><code>## 3 x 4 sparse Matrix of class &quot;dgCMatrix&quot;
+##             
+## [1,] 1 . 1 .
+## [2,] 1 . 1 .
+## [3,] . 1 . 1</code></pre>
+<pre><code>## 6 x 2 sparse Matrix of class &quot;dgCMatrix&quot;
+##         
+## [1,] 1 .
+## [2,] 1 .
+## [3,] . 1
+## [4,] 1 .
+## [5,] 1 .
+## [6,] . 1</code></pre>
+</div>
+<div id="solving-large-linear-systems" class="section level3">
+<h3>Solving large linear systems</h3>
+<p>Solving linear systems for very large and sparse systems is very difficult, as the inverse of a sparse matrix is not necessarily sparse. To avoid these problems we should directly solve the linear system using <code>solve(A, b)</code>.</p>
+<pre class="r"><code>nrow &lt;- ncol &lt;- 500
+A &lt;- Matrix(sample(c(0,1), nrow*ncol, TRUE, c(0.98, 0.02)), nrow, ncol, sparse=TRUE)
+A.inv &lt;- solve(A)
+
+# object sizes
+c(object.size(A), object.size(A.inv))</code></pre>
+<pre><code>## [1] 1884440 2001176</code></pre>
+<pre class="r"><code># possible elements
+nrow*ncol</code></pre>
+<pre><code>## [1] 250000</code></pre>
+<pre class="r"><code># entries in A
+nnzero(A)</code></pre>
+<pre><code>## [1] 4897</code></pre>
+<pre class="r"><code># entries in A.inv
+nnzero(A.inv)</code></pre>
+<pre><code>## [1] 250000</code></pre>
+</div>
+</div>
+</div>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  			</div>
+
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+                <span><a href="https://jakespiteri.co.uk">Jake Spiteri</a></span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span> <a href="https://jakespiteri.co.uk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+    </div>
+</footer>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+    <script src="https://jakespiteri.co.uk/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  </body>
+</html>
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://jakespiteri.co.uk/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+
+
+
+    </body>
+</html>

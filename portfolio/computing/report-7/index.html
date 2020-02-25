@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Jake Spiteri">
+<meta name="description" content="Debugging When writing code it is common to encounter problems which you do not expect. Functions for complex statistical tasks often do not return the output you want — in some cases it is obvious, but not always. It’s important to have a strong understanding of the debugging options offered by R and particular IDEs such as RStudio. Knowledge of these tools can make debugging much more efficient.
+When debugging code we should:" />
+<meta name="keywords" content="statistics, mathematics, data science, machine learning, deep learning" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://jakespiteri.co.uk/portfolio/computing/report-7/" />
+
+
+    <title>
+        
+            Portfolio Report 7: Debugging and Performance :: Jake Spiteri  — Jake Spiteri
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://jakespiteri.co.uk/main.min.7bfbbe12786fa0ded4b4c0d792cbb36a5bd0bdb0b856dde57aa7b1f6fe0f2b87.css">
+
+
+    
+        <link rel="stylesheet" type="text/css" href="static/style.css">
+    
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://jakespiteri.co.uk/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://jakespiteri.co.uk/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://jakespiteri.co.uk/favicon-16x16.png">
+    <link rel="manifest" href="https://jakespiteri.co.uk/site.webmanifest">
+    <link rel="mask-icon" href="https://jakespiteri.co.uk/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://jakespiteri.co.uk/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+<meta itemprop="name" content="Portfolio Report 7: Debugging and Performance">
+<meta itemprop="description" content="Debugging When writing code it is common to encounter problems which you do not expect. Functions for complex statistical tasks often do not return the output you want — in some cases it is obvious, but not always. It’s important to have a strong understanding of the debugging options offered by R and particular IDEs such as RStudio. Knowledge of these tools can make debugging much more efficient.
+When debugging code we should:">
+
+<meta itemprop="wordCount" content="2072">
+<meta itemprop="image" content="https://jakespiteri.co.uk"/>
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jakespiteri.co.uk"/>
+
+<meta name="twitter:title" content="Portfolio Report 7: Debugging and Performance"/>
+<meta name="twitter:description" content="Debugging When writing code it is common to encounter problems which you do not expect. Functions for complex statistical tasks often do not return the output you want — in some cases it is obvious, but not always. It’s important to have a strong understanding of the debugging options offered by R and particular IDEs such as RStudio. Knowledge of these tools can make debugging much more efficient.
+When debugging code we should:"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css' rel='stylesheet' type='text/css' />
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://jakespiteri.co.uk/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://jakespiteri.co.uk/about/">About</a></li><li><a href="https://jakespiteri.co.uk/portfolio/">Portfolio</a></li><li><a href="https://jakespiteri.co.uk/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://jakespiteri.co.uk/portfolio/computing/report-7/">Portfolio Report 7: Debugging and Performance</a></h2>
+
+            
+
+            <div class="post-content">
+                
+
+
+<div id="debugging" class="section level1">
+<h1>Debugging</h1>
+<p>When writing code it is common to encounter problems which you do not expect. Functions for complex statistical tasks often do not return the output you want — in some cases it is obvious, but not always. It’s important to have a strong understanding of the debugging options offered by R and particular IDEs such as RStudio. Knowledge of these tools can make debugging much more efficient.</p>
+<p>When debugging code we should:</p>
+<ul>
+<li>Try to understand exactly what the error is. We can gain a greater understanding if we think about our inputs and what the expected output should be. Often this is not so simple as the error occurs within a function and the error message doesn’t provide much information.</li>
+<li>Try to produce a reproducible and minimal example of the error. If this example demonstrates a bug in someone else’s code, the bug should be reported with the minimal example. The <code>reprex</code> package can help in producing reproducible examples to post online.</li>
+</ul>
+<p>The best way to avoid debugging code is to change the way you write code. When writing a complicated function it is often best to write small pieces at a time, and check if the function still works as expected. If you write a long and complicated function without testing, it will be hard to debug the code. If you start with small pieces it becomes easy to see when the code ‘breaks’.</p>
+<div id="example-of-debugging" class="section level2">
+<h2>Example of debugging</h2>
+<p>Consider an example in which we have a dataset of pairs of observations <span class="math inline">\(\{x_i, y_i\}_{i=1}^n\)</span>. We will generate this data using <span class="math inline">\(x_i \sim U[-10,10],\)</span> for <span class="math inline">\(i=1,\dots,n\)</span>, and <span class="math inline">\(y_i = x_i + \epsilon_i\)</span>, where <span class="math inline">\(\epsilon \sim N(0,4)\)</span>. We will fit a linear model with the covariate <span class="math inline">\(x\)</span>. We will clumsily implement the least squares solution.</p>
+<pre class="r"><code>x &lt;- runif(100,-10,10)
+y &lt;- (x) + rnorm(100,0,4)
+
+# built-in function
+model &lt;- lm(y~x)
+plot(x,y)
+abline(model$coefficients, col=&quot;red&quot;)</code></pre>
+<p><img src="https://jakespiteri.co.uk/portfolio/computing/Report-7_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>linear_regression &lt;- function(X,y) {
+  beta &lt;- solve(X %*% t(X)) %*% t(X) %*% y
+  return(beta %*% X)
+}
+x &lt;- cbind(rep(1,100), x)
+linear_regression(x, y)</code></pre>
+<pre><code>## Error in solve.default(X %*% t(X)): system is computationally singular: reciprocal condition number = 2.9384e-21</code></pre>
+<p>We cannot perform the matrix inverse as our system is computationally singular. There are a number of reasons that this may have happened, but I suspect that there may simply be a transpose where there shouldn’t be. However, there may also be a larger problem. In some cases our variables within the function are not what we expect them to be. In this case we are trying to compute <span class="math inline">\((XX^T)^{-1}\)</span>, when we should be computing <span class="math inline">\((X^TX)^{-1}\)</span>.</p>
+<p>We can use the <code>traceback()</code> function to find out what caused the error. We see that the error stems from the <code>solve.default()</code> function.</p>
+<pre class="r"><code>traceback()</code></pre>
+<pre><code>## No traceback available</code></pre>
+<p>The RStudio IDE provides great resources for debugging. An intuitive method one may implement is to place multiple <code>print(&lt;variable&gt;)</code>s in the function to determine the value of different variables. A <em>much</em> more effective method is to place <code>broswer()</code> within your code. This opens an interactive debugging environment.</p>
+<p>My preferred method of debugging code is to enter <code>debug(&lt;function&gt;)</code> into the console. Then when the specified function is ran we will immediately enter the interactive debugging environment within RStudio. When coding non-trivial functions this is <em>life changing</em>. This is always my first suggestion when someone can’t find a bug in their code. You can go through the function’s computation line-by-line, and print variables’ values via the console.</p>
+<p>It clearly isn’t possible to demonstrate the interactive environment within this document. However if we were in the interactive environment, we would see that <code>solve(t(x) %*% x)</code> is possible.</p>
+<pre class="r"><code>linear_regression &lt;- function(X,y) {
+  beta &lt;- solve(t(X) %*% X) %*% t(X) %*% y
+  return(beta %*% X)
+}
+linear_regression(x, y)</code></pre>
+<pre><code>## Error in beta %*% X: non-conformable arguments</code></pre>
+<p>We have solved one problem, but we have another. We now have non-conformable arguments. If we enter the interactive debugging environment we can see that beta has dimension (2,1) and X has dimension (100,2). Clearly this matrix multiplication isn’t possible — we should be computing <code>X %*% beta</code>. This produces a column vector of predictions.</p>
+<pre class="r"><code>linear_regression &lt;- function(X,y) {
+  beta &lt;- solve(t(X) %*% X) %*% t(X) %*% y
+  return(X %*% beta)
+}
+linear_regression(x, y)[1:5]</code></pre>
+<pre><code>## [1]  3.152413 -2.039984 -6.465985 -2.768799 -3.729968</code></pre>
+<p>We have successfully output predictions!</p>
+</div>
+</div>
+<div id="profiling" class="section level1">
+<h1>Profiling</h1>
+<p>Profiling is an analysis technique which tests the memory and time complexity of a program. When writing code we may find that some functions take unexpectedly long to run. R makes profiling quite easy via the package <code>profvis</code>.</p>
+<pre class="r"><code>library(profvis)</code></pre>
+<pre><code>## Error in library(profvis): there is no package called &#39;profvis&#39;</code></pre>
+<p>This package is a <em>statistical</em> profiler. It uses operating system interrupts to determine which code is currently operating. With this information we can clearly see which operations are taking a long time to run, while the profiler adds little overhead to the computation. This is particularly useful when writing multiple lines of code and when practicing functional programming. When nesting functions within functions it may become difficult to tell which function is responsible for long computation times. If the profiler tells us that one function accounts for a majority of the computation time, we have a clear understanding of what code to optimize. Otherwise we may spend a long time optimizing the performance of functions that account for very little of the computation.</p>
+<p>Note that a statistical profiler is very different to an instrumental profiler, which counts the number of times that an operation is performed. In such a case one must manually add counters to their code, and this adds substantial overhead to the computation.</p>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<p>Here we will use kernel regression as an example. We quickly recall the kernel method setup:</p>
+<p>Our estimator takes the form
+<span class="math display">\[ f(x; w_{LS-R}) = k(K + \lambda I)^{-1}y^T \]</span>
+where <span class="math inline">\(k^{(i)} = k(x, x_i) = \langle \phi(x), \phi(x_i)\rangle\)</span>, <span class="math inline">\(K_{i,j} = k(x_i, x_j)\)</span>.</p>
+<p>We have many choices for the kernel function <span class="math inline">\(k\)</span>:</p>
+<ul>
+<li><p>Linear kernel function: <span class="math inline">\(k(x_i, x_j) = \langle x_i, x_j \rangle\)</span>,</p></li>
+<li><p>Polynomial kernel function (of order <span class="math inline">\(b\)</span>): <span class="math inline">\(k(x_i, x_j) = (\langle x_i, x_j \rangle + 1)^b\)</span>,</p></li>
+<li><p>Radial basis function kernel: <span class="math inline">\(k(x_i, x_j) = \frac{\|x_i - x_j\|^2}{\sigma^2}\)</span>.</p></li>
+</ul>
+<p>We will implement a kernel method using the radial basis function. In this first implementation we are going to compute the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(K\)</span> by using two for loops. This function will produce one prediction at a time, and so we must loop over it a number of times in order to make more than one prediction. <strong>Note</strong>: We must recompute our estimator for every prediction.</p>
+<pre class="r"><code>rbf_function &lt;- function(vec1, vec2, bandwidth) {
+  return(exp(-norm(vec1 - vec2, type = &quot;2&quot;)^2/bandwidth^2))
+}
+
+kernel_regression_1 &lt;- function(X, y, x.pred, lambda, bandwidth) {
+  n &lt;- ncol(y)
+  n.pred &lt;- ncol(x.pred)
+  k &lt;- c()
+  for (i in 1:n) {
+      k &lt;- c(k, rbf_function(x.pred, X[,i], bandwidth))
+  }
+
+  K &lt;- matrix(nrow=n, ncol=n)
+  for (i in 1:n) {
+    for (j in 1:n) {
+      K[i,j] &lt;- rbf_function(X[,i], X[,j], bandwidth)
+    }
+  }
+  return(k %*% solve(K + lambda * diag(1,n)) %*% t(y))
+}</code></pre>
+<p>We simulate some basic data in order to evaluate the function.</p>
+<pre class="r"><code>set.seed(123)
+X &lt;- matrix(runif(100), ncol=100)
+X &lt;- rbind(X, rep(1,100))
+y &lt;- matrix(3.2*X[1,] + rnorm(100,0,0.5), ncol=100)
+
+# a wrapper function which allows us to produce multiple predictions
+multiple_pred &lt;- function(X, y, x.pred, lambda, bandwidth) {
+  pred &lt;- c()
+  for (i in 1:ncol(x.pred)) {
+    pred &lt;- c(pred, kernel_regression_1(X, y, x.pred[,i], lambda, bandwidth))
+  }
+  return(pred)
+}
+
+# sanity check --- we plot our predicted values
+predictions &lt;- multiple_pred(X, y, X, 1, 0.5)
+plot(X[1,], y)
+lines(sort(X[1,]), predictions[order(X[1,])], col = &quot;red&quot;)</code></pre>
+<p><img src="https://jakespiteri.co.uk/portfolio/computing/Report-7_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code># we use profvis to analyse the code
+profvis(multiple_pred(X, y, X, 1, 0.5))</code></pre>
+<pre><code>## Error in profvis(multiple_pred(X, y, X, 1, 0.5)): could not find function &quot;profvis&quot;</code></pre>
+<p>We see that the function <code>kernel_regression_1</code> is extremely inefficient. The biggest problem occurs due to the number of calls to the <code>rbf_function</code>. We will rewrite the function such that we only compute the <span class="math inline">\(n \times n\)</span> matrix once (for any number of predictions), and rerun the profvis analysis.</p>
+<pre class="r"><code>kernel_regression_2 &lt;- function(X, y, x.pred, lambda, bandwidth) {
+  n &lt;- ncol(y)
+  n.pred &lt;- ncol(x.pred)
+  k &lt;- matrix(nrow=n.pred, ncol = n)
+  for (i in 1:n.pred) {
+    for (j in 1:n) {
+      k[i,j] &lt;- rbf_function(x.pred[,i], X[,j], bandwidth)
+    }
+  }
+
+  K &lt;- matrix(nrow=n, ncol=n)
+  for (i in 1:n) {
+    for (j in 1:n) {
+      K[i,j] &lt;- rbf_function(X[,i], X[,j], bandwidth)
+    }
+  }
+  return(k %*% solve(K + lambda * diag(1,n)) %*% t(y))
+}</code></pre>
+<pre class="r"><code># sanity check --- we plot our predicted values
+predictions &lt;- kernel_regression_2(X, y, X, 1, 0.5)
+plot(X[1,], y)
+lines(sort(X[1,]), predictions[order(X[1,])], col = &quot;red&quot;)</code></pre>
+<p><img src="https://jakespiteri.co.uk/portfolio/computing/Report-7_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code># profvis
+profvis(kernel_regression_2(X, y, X, 1, 0.5))</code></pre>
+<pre><code>## Error in profvis(kernel_regression_2(X, y, X, 1, 0.5)): could not find function &quot;profvis&quot;</code></pre>
+<p>We see a speedup of approximately 45 times! The memory is also much more optimized. The majority of our computation time is still determined by the calls to the <code>rbf_function</code>. We see it is being used in two sets of nested for loops. Perhaps we could avoid this by vectorization. We will attempt to instead compute the outer product of arrays.</p>
+<pre class="r"><code>kernel_regression_3 &lt;- function(X, y, x.pred, lambda, bandwidth) {
+  n &lt;- ncol(y)
+  n.pred &lt;- ncol(x.pred)
+  k &lt;- matrix(nrow=n.pred, ncol = n)
+
+  K &lt;- outer(
+    1:n, 1:n,
+    Vectorize(function(i,j) rbf_function(X[,i], X[,j], bandwidth))
+  )
+
+  return(k %*% solve(K + lambda * diag(1,n)) %*% t(y))
+}</code></pre>
+<pre class="r"><code># sanity check --- we plot our predicted values
+predictions &lt;- kernel_regression_3(X, y, X, 1, 0.5)
+plot(X[1,], y)
+lines(sort(X[1,]), predictions[order(X[1,])], col = &quot;red&quot;)</code></pre>
+<p><img src="https://jakespiteri.co.uk/portfolio/computing/Report-7_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code># profvis
+profvis(kernel_regression_3(X, y, X, 1, 0.5))</code></pre>
+<pre><code>## Error in profvis(kernel_regression_3(X, y, X, 1, 0.5)): could not find function &quot;profvis&quot;</code></pre>
+</div>
+<div id="memory-management-in-r" class="section level2">
+<h2>Memory management in R</h2>
+<p>R uses pass-by-value semantics in its function calls. This means that if we assign some variable <span class="math inline">\(x\)</span> to be equal to another variable <span class="math inline">\(y\)</span>, then changing the value of <span class="math inline">\(y\)</span> will not change the value of <span class="math inline">\(x\)</span>. Code in R is interpreted line-by-line. This means that coding in R is rather intuitive and easy to reason about, but it also means that the code produced may not perform well — particularly in comparison to languages such as C which implement pass-by-reference semantics. After algorithmic complexity, memory management is one of the most important factors in performance.</p>
+<p>There are many things that R does in the background to improve performance. When editing elements in a matrix it seems illogical to work with multiple copies of the matrix, and so R indexes into the element and modifies it in place. In some cases R will copy the matrix and modify it.</p>
+<pre class="r"><code>library(pryr)</code></pre>
+<pre><code>## Error in library(pryr): there is no package called &#39;pryr&#39;</code></pre>
+<pre class="r"><code># modify in place
+x &lt;- rep(1,2)
+x[2] &lt;- 2
+
+# assign y to be x
+y &lt;- x
+
+# show y is not a copy of x --- R just points to x
+# refs(x) tells us how many variables point to this location
+c(address(x), refs(x))</code></pre>
+<pre><code>## Error in address(x): could not find function &quot;address&quot;</code></pre>
+<p>When <code>refs()</code> is 1 then R will modify the array in place. When <code>refs()</code> is 2 or greater, R will copy the array and modify the copy. This will prevent modifying an array that other variables are pointing to. This can be seen below.</p>
+<pre class="r"><code>x &lt;- rep(1,10)
+c(address(x), refs(x))</code></pre>
+<pre><code>## Error in address(x): could not find function &quot;address&quot;</code></pre>
+<pre class="r"><code>z &lt;- x
+c(address(x), refs(x))</code></pre>
+<pre><code>## Error in address(x): could not find function &quot;address&quot;</code></pre>
+<pre class="r"><code>x[5] &lt;- 2
+c(address(x), refs(x)) # creates a copy of x and modifies it</code></pre>
+<pre><code>## Error in address(x): could not find function &quot;address&quot;</code></pre>
+<p>When writing code it is best to avoid creating copies of an array as this is an inefficient use of memory. If you are worried about memory efficiency you should routinely use <code>address()</code> and <code>refs()</code> in order to test when objects are being copied. It may be useful to know that primitive functions in R do not increment the <code>refs()</code> count, whereas all non-primitive functions increment the <code>refs()</code> count. If memory efficiency is very important to you, it may be better to use <code>Rcpp</code> and write your function in C++.</p>
+<pre class="r"><code># modifies in place because &lt;- &lt;vector&gt; is a primitive function
+x &lt;- 1:5
+for(i in 1:5) {
+  x[i] &lt;- x[i] - 1
+  print(c(address(x), refs(x)))
+}</code></pre>
+<pre><code>## Error in address(x): could not find function &quot;address&quot;</code></pre>
+<pre class="r"><code># creates a copy because &lt;- &lt;data.frame&gt; is not a primitive function
+# we must be careful when working with non-primitive data structures
+# problem occurs because refs counter is incremented and thus R
+# copies the object
+x &lt;- data.frame(1:5)
+for(i in 1:5) {
+  x[i,1] &lt;- x[i,1] - 1
+  print(c(address(x), refs(x)))
+}</code></pre>
+<pre><code>## Error in address(x): could not find function &quot;address&quot;</code></pre>
+</div>
+</div>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  			</div>
+
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+                <span><a href="https://jakespiteri.co.uk">Jake Spiteri</a></span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span> <a href="https://jakespiteri.co.uk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+    </div>
+</footer>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+    <script src="https://jakespiteri.co.uk/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  </body>
+</html>
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://jakespiteri.co.uk/bundle.min.2d5469329143160ae2456a69c3c76dc2d0a3b212b46afe291a51bd68650ed6f8697e001dab54f1c272c77ce08092a8c55e5bb4314e0ee334aab4b927ec896638.js" integrity="sha512-LVRpMpFDFgriRWppw8dtwtCjshK0av4pGlG9aGUO1vhpfgAdq1TxwnLHfOCAkqjFXlu0MU4O4zSqtLkn7IlmOA=="></script>
+
+
+
+    </body>
+</html>
