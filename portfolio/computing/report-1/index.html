@@ -456,7 +456,7 @@ l1_norm(c(1,1)) # should be 2</code></pre>
 <pre><code>## function(x) {
 ##     return(sum(abs(x)^p)^(1/p))
 ##   }
-## &lt;environment: 0x55d65d758de0&gt;</code></pre>
+## &lt;environment: 0x56130b6bc610&gt;</code></pre>
 <p>We see that it depends on a free variable <code>p</code>. Recall that the value of the free variable is obtained from the environment in which the function was defined. In this case, <code>p</code> is equal to 1. Let’s check this by exploring the environment of the <code>l1_norm</code>.</p>
 <pre class="r"><code># list objects in l1_norm&#39;s environment
 ls(environment(l1_norm))</code></pre>
