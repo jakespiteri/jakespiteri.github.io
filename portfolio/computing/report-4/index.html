@@ -92,7 +92,7 @@ if (!doNotTrack) {
 
     </head>
 
-    <body class="dark-theme">
+    <body class="">
         <div class="container">
             <header class="header">
     <span class="header__inner">
@@ -180,10 +180,10 @@ t1 &lt;- system.time(add_cos1(x))
 t2 &lt;- system.time(add_cos2(x))</code></pre>
 <pre class="r"><code>t1 </code></pre>
 <pre><code>##    user  system elapsed 
-##   0.826   0.000   0.826</code></pre>
+##   0.825   0.001   0.827</code></pre>
 <pre class="r"><code>t2</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.319   0.030   0.349</code></pre>
+##   0.291   0.052   0.343</code></pre>
 <p>At the time of running, this provided a speedup of 2.4 times. We also note that the vectorized code is also easier to read.</p>
 <div id="high-dimensional-vectorization" class="section level2">
 <h2>High-dimensional vectorization</h2>
@@ -210,11 +210,11 @@ toss_die2 &lt;- function(nsim, n) {
 <pre class="r"><code>nsim &lt;- 1000; n &lt;- 500
 t1 &lt;- system.time(toss_die1(nsim, n)); t1</code></pre>
 <pre><code>##    user  system elapsed 
-##   2.083   0.007   2.089</code></pre>
+##   2.215   0.002   2.218</code></pre>
 <pre class="r"><code>t2 &lt;- system.time(toss_die2(nsim, n)); t2</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.039   0.000   0.039</code></pre>
-<p>We see that nested for loops are <em>very</em> slow and should be avoided when possible. In this case the vectorized code provides a speedup of 54 times! We will use the vectorized function in the following.</p>
+##   0.042   0.000   0.042</code></pre>
+<p>We see that nested for loops are <em>very</em> slow and should be avoided when possible. In this case the vectorized code provides a speedup of 53 times! We will use the vectorized function in the following.</p>
 <pre class="r"><code>nsim &lt;- 10000; n &lt;- 500
 average_value &lt;- toss_die2(nsim,n)
 hist(average_value, breaks = 30)</code></pre>
@@ -369,10 +369,10 @@ detectCores()</code></pre>
 <pre class="r"><code># demonstrate that distributing over 4 cores does not provide speed up of 4 times
 system.time(lapply(1:8, function(x) Sys.sleep(0.5)))                # 4 seconds</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.005   0.000   4.008</code></pre>
+##   0.004   0.000   4.008</code></pre>
 <pre class="r"><code>system.time(mclapply(1:8, function(x) Sys.sleep(0.5), mc.cores=4))  # expect 1 second</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.003   0.012   1.015</code></pre>
+##   0.003   0.012   1.016</code></pre>
 </div>
 <div id="parallelize-using-foreach" class="section level2">
 <h2>Parallelize using <code>foreach</code></h2>
@@ -487,7 +487,6 @@ for(i in 1:4){
 
 
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
 <script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
 
 

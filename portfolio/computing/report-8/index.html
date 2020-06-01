@@ -95,7 +95,7 @@ if (!doNotTrack) {
 
     </head>
 
-    <body class="dark-theme">
+    <body class="">
         <div class="container">
             <header class="header">
     <span class="header__inner">
@@ -185,9 +185,9 @@ dim(m)</code></pre>
 m &lt;- matrix(c(rnorm(2,0,1), rnorm(2, 1, 1)), 2, 2, 
             dimnames = list(c(&quot;obs 1&quot;, &quot;obs 2&quot;), c(&quot;r.v. 1&quot;, &quot;r.v. 2&quot;)))
 m</code></pre>
-<pre><code>##           r.v. 1     r.v. 2
-## obs 1 -0.1716273 -0.6003988
-## obs 2 -0.3099333  0.6559663</code></pre>
+<pre><code>##          r.v. 1    r.v. 2
+## obs 1 -0.183608 0.7488433
+## obs 2  0.020789 1.2952278</code></pre>
 <pre class="r"><code># print colnames
 colnames(m)</code></pre>
 <pre><code>## [1] &quot;r.v. 1&quot; &quot;r.v. 2&quot;</code></pre>
@@ -203,13 +203,13 @@ rownames(m) &lt;- c(&quot;new row name 1&quot;, &quot;new row name 2&quot;)
 # print new matrix
 m</code></pre>
 <pre><code>##                new col name 1 new col name 2
-## new row name 1     -0.1716273     -0.6003988
-## new row name 2     -0.3099333      0.6559663</code></pre>
+## new row name 1      -0.183608      0.7488433
+## new row name 2       0.020789      1.2952278</code></pre>
 <p>It’s quite odd but when we select a row or column of a matrix, <code>R</code> returns a vector and loses the matrix dimensions. When selecting a row of a <span class="math inline">\(2 \times 2\)</span> matrix we would expect a vector of dimension <span class="math inline">\(1 \times 2\)</span>.</p>
 <pre class="r"><code># select row
 m[1,]</code></pre>
 <pre><code>## new col name 1 new col name 2 
-##     -0.1716273     -0.6003988</code></pre>
+##     -0.1836080      0.7488433</code></pre>
 <pre class="r"><code># check dimensions of row
 dim(m[1,])</code></pre>
 <pre><code>## NULL</code></pre>
@@ -217,7 +217,7 @@ dim(m[1,])</code></pre>
 <pre class="r"><code># select row
 m[1,,drop=F]</code></pre>
 <pre><code>##                new col name 1 new col name 2
-## new row name 1     -0.1716273     -0.6003988</code></pre>
+## new row name 1      -0.183608      0.7488433</code></pre>
 <pre class="r"><code># check dimensions
 dim(m[1,,drop=F])</code></pre>
 <pre><code>## [1] 1 2</code></pre>
@@ -282,14 +282,14 @@ x2 &lt;- solve(A, b)
 
 # compute some metric of the error
 norm(x-x1)</code></pre>
-<pre><code>## [1] 0.0004334331</code></pre>
+<pre><code>## [1] 0.000149127</code></pre>
 <pre class="r"><code>norm(x-x2)</code></pre>
-<pre><code>## [1] 1.475396e-05</code></pre>
+<pre><code>## [1] 8.920669e-06</code></pre>
 <pre class="r"><code># compare the residuals
 norm(b - A %*% x1)</code></pre>
-<pre><code>## [1] 1.026593e-05</code></pre>
+<pre><code>## [1] 6.685913e-06</code></pre>
 <pre class="r"><code>norm(b - A %*% x2)</code></pre>
-<pre><code>## [1] 7.771561e-16</code></pre>
+<pre><code>## [1] 6.661338e-16</code></pre>
 <p>We see that solving the system of equations directly is far superior, both in terms of accuracy and speed. In <code>R</code> we should always avoid directly computing the inverse of a matrix, unless the inverted matrix will be used multiple times to solve linear systems. Even then, there are better ways to approach the problem. We can always look at different decompositions of the matrix and find a more numerically stable method of solving the linear system. This is what functions such as <code>lm()</code> do — they do not directly solve for predicted coefficients using <span class="math inline">\(\hat{\beta} = (X^TX)^{-1}X^TY\)</span>, they rely on the QR decomposition. Before we compute the inverse of a matrix we should try to find a more elegant solution by decomposing the matrices involved.</p>
 </div>
 <div id="numerical-stability-and-finite-precision-arithmetic" class="section level2">
@@ -345,19 +345,19 @@ all.equal(0.1 + 0.2, 0.3)</code></pre>
 A &lt;- matrix(rnorm(100),10,10); B &lt;- matrix(rnorm(100),10,10); C &lt;- rnorm(10)
 summary(c((A + B) - A - B))</code></pre>
 <pre><code>##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
-## -4.441e-16  0.000e+00  0.000e+00  1.353e-18  0.000e+00  2.220e-16</code></pre>
+## -2.220e-16  0.000e+00  0.000e+00  2.290e-18  0.000e+00  4.441e-16</code></pre>
 <pre class="r"><code># check error for matrix multiplication
 summary(c(A%*%B%*%C - A%*%(B%*%C)))</code></pre>
 <pre><code>##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
-## -1.776e-15 -6.037e-16  2.220e-16  2.748e-16  1.443e-15  1.776e-15</code></pre>
+## -5.329e-15  1.110e-16  6.661e-16  4.441e-16  1.776e-15  3.553e-15</code></pre>
 <pre class="r"><code># check computation times
 n &lt;- 5000
 A &lt;- matrix(rnorm(n^2), n, n); B &lt;- matrix(rnorm(n^2), n, n); C &lt;- rnorm(n)
 c(system.time(A%*%B%*%C), system.time(A%*%(B%*%C)))</code></pre>
 <pre><code>##  user.self   sys.self    elapsed user.child  sys.child  user.self   sys.self 
-##     14.704      1.024      2.060      0.000      0.000      0.394      0.140 
+##     16.604      0.868      2.302      0.000      0.000      0.384      0.127 
 ##    elapsed user.child  sys.child 
-##      0.089      0.000      0.000</code></pre>
+##      0.080      0.000      0.000</code></pre>
 <p>When working with matrices we must think carefully about what we are trying to do, in order to avoid unnecessary multiplications which can introduce numerical errors.</p>
 <p>Suppose we want to sum the diagonal entries of the matrix product <span class="math inline">\(AB\)</span>, for <span class="math inline">\(A \in \mathbb{R}^{n \times m}\)</span>, <span class="math inline">\(B \in \mathbb{R}^{m \times n}\)</span> where <span class="math inline">\(m &lt;&lt; n\)</span>. Note the costs of forming <span class="math inline">\(AB\)</span> compared to <span class="math inline">\(BA\)</span> (<span class="math inline">\(\mathcal{O}(n^2m)\)</span> compared to <span class="math inline">\(\mathcal{O}(m^2n)\)</span>). In <code>R</code> there are multiple ways we can do this.</p>
 <ul>
@@ -375,24 +375,24 @@ third &lt;- sum(A * t(B))
 
 # compare errors
 summary(first - second)</code></pre>
-<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## 9.095e-13 9.095e-13 9.095e-13 9.095e-13 9.095e-13 9.095e-13</code></pre>
+<pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## 1.08e-12 1.08e-12 1.08e-12 1.08e-12 1.08e-12 1.08e-12</code></pre>
 <pre class="r"><code>summary(first - third)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##       0       0       0       0       0       0</code></pre>
+<pre><code>##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+## -5.684e-14 -5.684e-14 -5.684e-14 -5.684e-14 -5.684e-14 -5.684e-14</code></pre>
 <pre class="r"><code>summary(second - third)</code></pre>
 <pre><code>##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
-## -9.095e-13 -9.095e-13 -9.095e-13 -9.095e-13 -9.095e-13 -9.095e-13</code></pre>
+## -1.137e-12 -1.137e-12 -1.137e-12 -1.137e-12 -1.137e-12 -1.137e-12</code></pre>
 <pre class="r"><code># compare computation time
 system.time(sum(diag(A %*% B))) # first</code></pre>
 <pre><code>##    user  system elapsed 
-##  15.613   0.891   2.260</code></pre>
+##  14.910   0.855   2.117</code></pre>
 <pre class="r"><code>system.time(sum(diag(B %*% A))) # second</code></pre>
 <pre><code>##    user  system elapsed 
-##   1.222   0.077   0.180</code></pre>
+##   1.207   0.072   0.175</code></pre>
 <pre class="r"><code>system.time(sum(A * t(B)))      # third</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.161   0.067   0.135</code></pre>
+##   0.116   0.008   0.123</code></pre>
 <p>The second method is much better than the first both in terms of precision and run time. The third method is better than the second method.</p>
 </div>
 <div id="sparse-matrices" class="section level2">
@@ -586,7 +586,6 @@ nnzero(A.inv)</code></pre>
 
 
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
 <script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
 
 
