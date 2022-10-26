@@ -9,107 +9,7 @@
       <link>https://jakespiteri.co.uk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 26 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jakespiteri.co.uk/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Portfolio Report 1: An Introduction to R</title>
-      <link>https://jakespiteri.co.uk/portfolio/computing-1/report-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/portfolio/computing-1/report-1/</guid>
-      <description>R is a high-level programming language widely used for statistical computing. Base R provides users with a large variety of statistical and graphical tools, which are easily extended via the use of packages.
-R is an interpreted programming language. This means that R users execute code via a command-line interpreter and code is interpreted into low-level instructions one line at a time. Integrated development environments (IDEs) such as RStudio provide easy access to such an interpreter through the use of a console.</description>
-    </item>
-    
-    <item>
-      <title>Portfolio Report 2: Reproducibility</title>
-      <link>https://jakespiteri.co.uk/portfolio/computing-1/report-2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/portfolio/computing-1/report-2/</guid>
-      <description>When producing research which involves a lot of code, it is important that your research/analyses can be reproduced. When analyzing data it is common to write some code, change it a little and test some version of your code in the console. Then when your final document is produced, the R script or Markdown document may not produce the exact same results as your published analysis. This is one of the main challenges of producing reproducible research.</description>
-    </item>
-    
-    <item>
-      <title>Portfolio Report 3: Projects, version control, and packages</title>
-      <link>https://jakespiteri.co.uk/portfolio/computing-1/report-3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/portfolio/computing-1/report-3/</guid>
-      <description>R makes it relatively easy to structure a project, by creating a “project”. It also integrates git and github which makes it easy to track changes and publish code to the web.
-Projects: organizing code The best way to approach projects is to maintain a well-defined file structure. RStudio projects allow you to easily divide your work into different directories. Of course, this can be done manually. Generally a good high-level file structure within your project’s directory is:</description>
-    </item>
-    
-    <item>
-      <title>Portfolio Report 4: Vectorization and parallel computing</title>
-      <link>https://jakespiteri.co.uk/portfolio/computing-1/report-4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/portfolio/computing-1/report-4/</guid>
-      <description>Vectorization Vectorization is the process of replacing the use of loops in code, with a single operation applied elementwise to the vector. In vectorizing code, the multiple instructions running the same operation in a for loop are replaced by a single instruction which applies the operation to multiple elements in a vector.
-Vectorization is much faster than using for loops in interpreted languages such as R, Matlab, and Python. To see this in practice, we will look at some examples.</description>
-    </item>
-    
-    <item>
-      <title>Portfolio Report 5: Functional and object-oriented programming</title>
-      <link>https://jakespiteri.co.uk/portfolio/computing-1/report-5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/portfolio/computing-1/report-5/</guid>
-      <description>Programming paradigms R supports multiple programming paradigms. Programming paradigms describe the way in which code is written and structured for larger projects. The types of programming structures are:
-Imperative programming — We define a sequence of instructions that modify the ‘state’ of the program. Object-oriented programming — Objects combine the machine’s state with a set of methods. Programs are then defined via the construction of objects. Declarative programming — A sequence of operations is defined that only specify what the output of the program should be.</description>
-    </item>
-    
-    <item>
-      <title>Portfolio Report 6: Tidyverse</title>
-      <link>https://jakespiteri.co.uk/portfolio/computing-1/report-6/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/portfolio/computing-1/report-6/</guid>
-      <description>Tidyverse The Tidyverse is a set of inter-compatible packages that are used throughout data science. The Tidyverse provides powerful tools that allow us to quickly `tidy’ data into data frames, transform the data, and then visualize it. This will then allow us to produce models. Throughout this report we will explore a real dataset found on Kaggle.
-Pipes The pipe operator %&amp;gt;% is provided by the magrittr R package. Pipes are a powerful tool that allow us to clearly express a sequence of operations.</description>
-    </item>
-    
-    <item>
-      <title>Portfolio Report 7: Debugging and Performance</title>
-      <link>https://jakespiteri.co.uk/portfolio/computing-1/report-7/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/portfolio/computing-1/report-7/</guid>
-      <description>Debugging When writing code it is common to encounter problems which you do not expect. Functions for complex statistical tasks often do not return the output you want — in some cases it is obvious, but not always. It’s important to have a strong understanding of the debugging options offered by R and particular IDEs such as RStudio. Knowledge of these tools can make debugging much more efficient.
-When debugging code we should:</description>
-    </item>
-    
-    <item>
-      <title>Portfolio Report 8: Matrices</title>
-      <link>https://jakespiteri.co.uk/portfolio/computing-1/report-8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/portfolio/computing-1/report-8/</guid>
-      <description>Matrices In this report we will look at how R treats matrices.
-We will explore the Matrix package, which extends the basic R functionality for matrices. For example, it seems odd that base R does not have a method of determining the rank of a matrix up to a certain tolerance — the Matrix package adds this functionality.
-Dense matrices A matrix is a two dimensional data structure in R.</description>
-    </item>
-    
-    <item>
-      <title>Portfolio Report 9: Numerical Optimization</title>
-      <link>https://jakespiteri.co.uk/portfolio/computing-1/report-9/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/portfolio/computing-1/report-9/</guid>
-      <description>Numerical Optimization An optimization problem is the problem of finding the best solution within a set of feasible solutions. There are many characteristics of optimization problems that define them and determine the methods needed to solve them. For example, we may have continuous or discrete problems; convex or non-convex problems; linear or non-linear problems. In this document we will consider continuous problems, and make no explicit assumptions on the convexity or the linearity of the problem.</description>
-    </item>
-    
-    <item>
-      <title>Portfolio Report 10: Integration and Markov Chain Monte Carlo</title>
-      <link>https://jakespiteri.co.uk/portfolio/computing-1/report-10/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://jakespiteri.co.uk/portfolio/computing-1/report-10/</guid>
-      <description>Numerical Integration Quadrature “Quadrature rules” are integral approximations which use a finite number of evaluations of the function. All of the quadrature rules below approximate a function using interpolating polynomials.
-We will first look at some key ideas in numerical integration by approximating definite integrals over a finite interval. We will then extend these ideas to semi-infinite and infinite intervals. We will also consider multiple integrals.
-In practice we can use Rs integrate function for one-dimensional integrals, and the cubature package for multiple integrals.</description>
-    </item>
-    
+    <lastBuildDate>Tue, 25 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jakespiteri.co.uk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>https://jakespiteri.co.uk/about/</link>
@@ -121,6 +21,16 @@ My research interests include:
 Computational statistics,
 Kernel methods,
 Bayesian inference.</description>
+    </item>
+    
+    <item>
+      <title>Portfolio</title>
+      <link>https://jakespiteri.co.uk/portfolio/</link>
+      <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jakespiteri.co.uk/portfolio/</guid>
+      <description>Below is small portfolio of my personal code and notes that I have written during my PhD.
+Notes and reports Statistical Methods 1 — Lecture Notes. Statistical Computing 1 — Reports which can be found below. An introduction to R Reproducibility Projects, version control, and packages Vectorization and parallel computing Functional and object-oriented programming Tidyverse Debugging and performance Matrices Numerical optimization Integration and Markov chain Monte Carlo Statistical Computing 2 — Reports which can be found below.</description>
     </item>
     
     <item>

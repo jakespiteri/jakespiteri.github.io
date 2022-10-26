@@ -2,30 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jakespiteri.co.uk/portfolio/computing-1/report-1/</loc>
-  </url><url>
-    <loc>https://jakespiteri.co.uk/portfolio/computing-1/report-2/</loc>
-  </url><url>
-    <loc>https://jakespiteri.co.uk/portfolio/computing-1/report-3/</loc>
-  </url><url>
-    <loc>https://jakespiteri.co.uk/portfolio/computing-1/report-4/</loc>
-  </url><url>
-    <loc>https://jakespiteri.co.uk/portfolio/computing-1/report-5/</loc>
-  </url><url>
-    <loc>https://jakespiteri.co.uk/portfolio/computing-1/report-6/</loc>
-  </url><url>
-    <loc>https://jakespiteri.co.uk/portfolio/computing-1/report-7/</loc>
-  </url><url>
-    <loc>https://jakespiteri.co.uk/portfolio/computing-1/report-8/</loc>
-  </url><url>
-    <loc>https://jakespiteri.co.uk/portfolio/computing-1/report-9/</loc>
-  </url><url>
-    <loc>https://jakespiteri.co.uk/portfolio/computing-1/report-10/</loc>
-  </url><url>
     <loc>https://jakespiteri.co.uk/about/</loc>
-    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jakespiteri.co.uk/</loc>
     <lastmod>2022-10-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jakespiteri.co.uk/portfolio/</loc>
@@ -37,9 +14,10 @@
     <loc>https://jakespiteri.co.uk/blog/1-helloworld/</loc>
     <lastmod>2022-10-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jakespiteri.co.uk/categories/</loc>
+    <loc>https://jakespiteri.co.uk/</loc>
+    <lastmod>2022-10-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://jakespiteri.co.uk/portfolio/computing-1/</loc>
+    <loc>https://jakespiteri.co.uk/categories/</loc>
   </url><url>
     <loc>https://jakespiteri.co.uk/tags/</loc>
   </url>
