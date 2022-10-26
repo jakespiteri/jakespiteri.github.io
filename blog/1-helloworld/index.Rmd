@@ -1,0 +1,8 @@
+---
+title: "Hello world"
+author: "Jake Spiteri"
+date: '2022-10-25'
+output: html_document
+---
+
+Blog posts coming soon.

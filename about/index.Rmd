@@ -1,0 +1,27 @@
+---
+title: "About"
+author: "Jake Spiteri"
+date: "`r Sys.Date()`"
+output: html_document
+hideMeta: true
+ShowBreadCrumbs: false
+---
+
+
+I am a final-year PhD student (graduating September 2023) under the [COMPASS CDT](http://www.bristol.ac.uk/cdt/compass/) in the [Institute for Statistical Science](https://www.bristolmathsresearch.org/statistical-science/), [University of Bristol](https://www.bristol.ac.uk/). In my research I propose novel methods for statistical inference in latent variable models. My research is supervised by [Dr Mathieu Gerber](https://research-information.bris.ac.uk/en/persons/mathieu-gerber) and [Professor Anthony Lee](https://sites.google.com/view/anthonylee). More broadly, I am interested in statistical learning theory and machine learning.
+
+My research interests include:
+
+- Computational statistics,
+
+- Kernel methods,
+
+- Bayesian inference.
+
+Prior to my PhD I completed an integrated master’s degree in Mathematics with Statistics at the University of Bristol. My master's thesis was on outlier detection in time-varying networks.
+
+You can contact me at ```jake.spiteri@bristol.ac.uk```.
+
+## Teaching
+I have been a Graduate Teacher for Financial Mathematics, Financial Risk Management, Probability & Statistics, and Bayesian Modelling in the School of Mathematics. I was also a Teaching Assistant on the Statistical Computing and Empirical Methods unit offered by the School of Engineering for the MSc in Data Science.
+

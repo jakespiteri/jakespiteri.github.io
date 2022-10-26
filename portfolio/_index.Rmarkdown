@@ -1,0 +1,43 @@
+---
+title: "Portfolio"
+author: "Jake Spiteri"
+date: "`r Sys.Date()`"
+output: html_document
+hideMeta: true
+ShowBreadCrumbs: true
+---
+
+Below is small portfolio of my personal code and notes that I have written during my PhD.
+
+## Notes and reports
+
+- __Statistical Methods 1__ — [Lecture Notes](methods-1/notes.pdf).
+- __Statistical Computing 1__ — Reports which can be found below.
+    1. [An introduction to R](computing-1/report-1/)
+    2. [Reproducibility](computing-1/report-2/)
+    3. [Projects, version control, and packages](computing-1/report-3/)
+    4. [Vectorization and parallel computing](computing-1/report-4/)
+    5. [Functional and object-oriented programming](computing-1/report-5/)
+    6. [Tidyverse](computing-1/report-6/)
+    7. [Debugging and performance](computing-1/report-7/)
+    8. [Matrices](computing-1/report-8/)
+    9. [Numerical optimization](computing-1/report-9/)
+    10. [Integration and Markov chain Monte Carlo](computing-1/report-10/)
+- __Statistical Computing 2__ — Reports which can be found below.
+    1. [An introduction to C++](computing-2/report-1.pdf)
+    2. [Interfacing R with C](computing-2/report-2.pdf)
+    3. [Advanced Rcpp](computing-2/report-3.pdf)
+    4. [Linux](computing-2/report-4.pdf)
+    5. [High-performance computing](computing-2/report-5.pdf)
+    6. [OpenMP](computing-2/report-6.pdf)
+    7. [Intermediate python and data analysis in python](computing-2/report-7.pdf)
+    8. [Parallel python](computing-2/report-8.pdf)
+    9. [Deep learning](computing-2/report-9.pdf)
+    10. [Parallel Rcpp](computing-2/report-10.pdf)
+
+## Presentations
+
+- Optimization and the BFGS Algorithm — slides [here](presentations/optimization.pdf).
+- Kernel Independent Component Analysis — slides [here](presentations/KernelICA.pdf).
+- What is non-parametric regression? — slides [here](presentations/nonpar.pdf)
+

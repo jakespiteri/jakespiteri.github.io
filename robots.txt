@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://jakespiteri.co.uk/sitemap.xml
