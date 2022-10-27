@@ -7,7 +7,7 @@ hideMeta: true
 ShowBreadCrumbs: true
 ---
 
-Below is small portfolio of my personal code and notes that I have written during my PhD.
+Below is small portfolio of my personal code and notes.
 
 ## Notes and reports
 
