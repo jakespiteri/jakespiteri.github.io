@@ -38,6 +38,6 @@ Below is small portfolio of my personal code and notes that I have written durin
 ## Presentations
 
 - Optimization and the BFGS Algorithm — slides [here](presentations/optimization.pdf).
-- Kernel Independent Component Analysis — slides [here](presentations/KernelICA.pdf).
+- Kernel Independent Component Analysis — slides [here](presentations/kernelICA.pdf).
 - What is non-parametric regression? — slides [here](presentations/nonpar.pdf)
 
