@@ -8,9 +8,11 @@ ShowBreadCrumbs: false
 ---
 
 
-I am a final-year PhD student (graduating September 2023) under the [COMPASS CDT](http://www.bristol.ac.uk/cdt/compass/) in the [Institute for Statistical Science](https://www.bristolmathsresearch.org/statistical-science/), [University of Bristol](https://www.bristol.ac.uk/). In my research I propose novel methods for statistical inference in latent variable models. My research is supervised by [Dr Mathieu Gerber](https://research-information.bris.ac.uk/en/persons/mathieu-gerber) and [Professor Anthony Lee](https://sites.google.com/view/anthonylee). More broadly, I am interested in statistical learning theory and machine learning.
+I am currently working as a Quantitative Strategist at BNP Paribas.
 
-My research interests include:
+I completed my PhD under the [Computational Statistics and Data Science CDT](http://www.bristol.ac.uk/cdt/compass/) in the [Institute for Statistical Science](https://www.bristolmathsresearch.org/statistical-science/), [University of Bristol](https://www.bristol.ac.uk/). My research proposed novel methods for statistical inference in latent variable models. My research was supervised by [Dr Mathieu Gerber](https://research-information.bris.ac.uk/en/persons/mathieu-gerber) and [Professor Anthony Lee](https://sites.google.com/view/anthonylee). My work deepened my interest in statistical learning theory and machine learning, areas that continue to inform my professional endeavors.
+
+My key research interests include:
 
 - Computational statistics,
 
@@ -23,5 +25,5 @@ Prior to my PhD I completed an integrated master’s degree in Mathematics with 
 You can contact me at ```jake.spiteri@bristol.ac.uk```.
 
 ## Teaching
-I have been a Graduate Teacher for Financial Mathematics, Financial Risk Management, Probability & Statistics, and Bayesian Modelling in the School of Mathematics. I was also a Teaching Assistant on the Statistical Computing and Empirical Methods unit offered by the School of Engineering for the MSc in Data Science.
+I was a Graduate Teacher for Financial Mathematics, Financial Risk Management, Probability & Statistics, and Bayesian Modelling in the School of Mathematics. I was also a Teaching Assistant on the Statistical Computing and Empirical Methods unit offered by the School of Engineering for the MSc in Data Science.
 

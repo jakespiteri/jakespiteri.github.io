@@ -5,6 +5,7 @@
     <link>https://jakespiteri.co.uk/</link>
     <description>Recent content on Jake Spiteri</description>
     <image>
+      <title>Jake Spiteri</title>
       <url>https://jakespiteri.co.uk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://jakespiteri.co.uk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
@@ -113,14 +114,11 @@ In practice we can use Rs integrate function for one-dimensional integrals, and 
     <item>
       <title>About</title>
       <link>https://jakespiteri.co.uk/about/</link>
-      <pubDate>Thu, 27 Oct 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 08 Dec 2023 00:00:00 +0000</pubDate>
       
       <guid>https://jakespiteri.co.uk/about/</guid>
-      <description>I am a final-year PhD student (graduating September 2023) under the COMPASS CDT in the Institute for Statistical Science, University of Bristol. In my research I propose novel methods for statistical inference in latent variable models. My research is supervised by Dr Mathieu Gerber and Professor Anthony Lee. More broadly, I am interested in statistical learning theory and machine learning.
-My research interests include:
-Computational statistics,
-Kernel methods,
-Bayesian inference.</description>
+      <description>I am currently working at BNP Paribas.
+I completed my PhD under the Computational Statistics and Data Science CDT in the Institute for Statistical Science, University of Bristol. My research proposed novel methods for statistical inference in latent variable models. My research was supervised by Dr Mathieu Gerber and Professor Anthony Lee. My work deepened my interest in statistical learning theory and machine learning, areas that continue to inform my professional endeavors.</description>
     </item>
     
     <item>
