@@ -8,7 +8,7 @@ ShowBreadCrumbs: false
 ---
 
 
-I am currently working as a Quantitative Strategist at BNP Paribas.
+I am currently working as a Quantitative Strategist at BNP Paribas CIB.
 
 I completed my PhD under the [Computational Statistics and Data Science CDT](http://www.bristol.ac.uk/cdt/compass/) in the [Institute for Statistical Science](https://www.bristolmathsresearch.org/statistical-science/), [University of Bristol](https://www.bristol.ac.uk/). My research proposed novel methods for statistical inference in latent variable models. My research was supervised by [Dr Mathieu Gerber](https://research-information.bris.ac.uk/en/persons/mathieu-gerber) and [Professor Anthony Lee](https://sites.google.com/view/anthonylee). My work deepened my interest in statistical learning theory and machine learning, areas that continue to inform my professional endeavors.
 
