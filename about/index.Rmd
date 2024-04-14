@@ -22,7 +22,7 @@ My key research interests include:
 
 Prior to my PhD I completed an integrated master’s degree in Mathematics with Statistics at the University of Bristol. My master's thesis was on outlier detection in time-varying networks.
 
-You can contact me at ```jake.spiteri@bristol.ac.uk```.
+You can contact me at ```hi@jakespiteri.co.uk```.
 
 ## Teaching
 I was a Graduate Teacher for Financial Mathematics, Financial Risk Management, Probability & Statistics, and Bayesian Modelling in the School of Mathematics. I was also a Teaching Assistant on the Statistical Computing and Empirical Methods unit offered by the School of Engineering for the MSc in Data Science.
